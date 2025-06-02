@@ -8,3 +8,4 @@ class User < ApplicationRecord
   # UserParty.create!(user: self)
   # end
 end
+ 
