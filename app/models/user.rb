@@ -1,10 +1,10 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # has_one :party
+  # belongs_to :party, through: :user_parties
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def generate_cart
-  UserParty.create!(user: self)
-  end
+  # def generate_party
+  # UserParty.create!(user: self)
+  # end
 end
