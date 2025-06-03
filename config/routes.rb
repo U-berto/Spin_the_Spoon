@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :restaurants, only: [:show]
-
+  resources :parties, only: [:create, :show]
   devise_for :users
   root to: "pages#home"
   get '/restaurants_api/:id/pick', to: 'restaurants_api#pick_restaurant', as: :pick_restaurant
