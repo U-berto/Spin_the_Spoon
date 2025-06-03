@@ -20,4 +20,3 @@ class PartiesController < ApplicationController
     end
   end
 end
-
