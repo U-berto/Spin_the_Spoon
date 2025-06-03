@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>What cuisine do you fancy?</h1>
+
+<h2>Categories</h2>
+
+<% rows = @categories.each_slice(2).to_a %>
+
+<% rows.each_with_index do |row, index| %>
+ <div style="display: flex; justify-content: center; gap: 160px; margin-bottom: 20px;">
+    <% row.each do |category| %>
+      <div style="width: 30%; background-color:rgb(159, 152, 152); padding: 10px 15px; border-radius: 8px; text-align: center;">
+        <h3><%= category %></h3> 
+      </div>
+    <% end %>
+  </div>
+<% end %>
