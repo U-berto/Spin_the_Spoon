@@ -10,6 +10,7 @@ class PartiesController < ApplicationController
       if @party.save
         redirect_to party_path(@party), notice: "Party created for #{matched_cuisine}!"
       else
+
         flash[:alert] = "Something went wrong"
         redirect_to root_path
       end
@@ -19,3 +20,4 @@ class PartiesController < ApplicationController
     end
   end
 end
+

@@ -1,14 +1,3 @@
-
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
 UserParty.destroy_all
 Friendship.destroy_all
 Party.destroy_all
@@ -61,9 +50,9 @@ restaurant29 = Restaurant.create!(name: "BBQ Central", category: "Barbecue", loc
 restaurant30 = Restaurant.create!(name: "Sapore di Mare", category: "Seafood", location: "Carrer de Pujades 88, Barcelona", rating: 5)
 
 
-party1 = Party.create!(user: user1, restaurant: restaurant1, risk_level: "low")
-party2 = Party.create!(user: user2, restaurant: restaurant2, risk_level: "medium")
-party3 = Party.create!(user: user3, restaurant: restaurant3, risk_level: "high")
+party1 = Party.create!(user: user1, restaurant: restaurant1, category: "Italian", risk_level: "low")
+party2 = Party.create!(user: user2, restaurant: restaurant2, category: "Asian", risk_level: "medium")
+party3 = Party.create!(user: user3, restaurant: restaurant3, category: "Indian", risk_level: "high")
 
 
 UserParty.create!(user: user2, party: party1, accepted: true)
