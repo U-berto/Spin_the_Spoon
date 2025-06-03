@@ -21,11 +21,11 @@ user3 = User.create!(email: "carla@example.com", password: "password", username:
 user4 = User.create!(email: "david@example.com", password: "password", username: "david", address: "Avinguda Diagonal 103, Barcelona", public: false)
 user5 = User.create!(email: "elena@example.com", password: "password", username: "elena", address: "Carrer de Sants 66, Barcelona")
 
-Friendship.create!(user: user1, friend: user2)
-Friendship.create!(user: user1, friend: user3)
-Friendship.create!(user: user2, friend: user4)
-Friendship.create!(user: user3, friend: user5)
-Friendship.create!(user: user4, friend: user5)
+user1.friend(user2)
+user1.friend(user3)
+user2.friend(user4)
+user3.friend(user5)
+user4.friend(user5)
 
 restaurant1 = Restaurant.create!(name: "Trattoria Da Gino", category: "Italian", location: "Via Roma 1, Barcelona", rating: 4)
 restaurant2 = Restaurant.create!(name: "Sushi Yama", category: "Sushi", location: "Carrer de Sants 45, Barcelona", rating: 5)
@@ -66,7 +66,7 @@ party2 = Party.create!(user: user2, restaurant: restaurant2, risk_level: "medium
 party3 = Party.create!(user: user3, restaurant: restaurant3, risk_level: "high")
 
 
-UserParty.create!(user: user1, party: party1, accepted: true)
+UserParty.create!(user: user2, party: party1, accepted: true)
 UserParty.create!(user: user2, party: party2, accepted: true)
 UserParty.create!(user: user3, party: party3, accepted: true)
 
