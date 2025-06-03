@@ -1,3 +1,12 @@
+  <form class="simple_form search" action="/parties" method="post">
+    <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
+      <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Type a cuisine..." />
+      <button type="submit" class="btn d-flex align-items-center justify-content-center">
+        <i class="fas fa-search text-secondary"></i>
+      </button>
+    </div>
+  </form>
+
 <% @categories.each do |category| %>
   <div>
     <%= form_with url: parties_path, method: :post do |f| %>

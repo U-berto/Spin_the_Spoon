@@ -141,6 +141,7 @@ GEM
     ffi (1.17.2-x86_64-linux-musl)
     font-awesome-sass (6.7.2)
       sassc (~> 2.0)
+    fuzzy_match (2.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     httparty (0.23.1)
@@ -336,7 +337,11 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 6.1)
+
+  fuzzy_match
+
   httparty
+
   importmap-rails
   jbuilder
   pg (~> 1.1)
