@@ -1,17 +1,21 @@
 class PartiesController < ApplicationController
-  def show
-    @hello = "hello frpm controller"
-  end
+  include ApplicationHelper
+
   def create
-    category_name = params[:category_name] 
-    @party = Party.new(category: category_name, user: current_user)
-    
-    if @party.save
-        redirect_to party_path(@party), notice: "Party created for #{category_name}!"
-     else
+    user_input = params[:category_name].strip.capitalize # Get user input
+    matched_cuisine = find_cuisine(user_input) # Try to match input
+
+    if matched_cuisine && CUISINES.include?(matched_cuisine) # Ensure the match is valid
+      @party = Party.new(category: matched_cuisine, user: current_user)
+      if @party.save
+        redirect_to party_path(@party), notice: "Party created for #{matched_cuisine}!"
+      else
         flash[:alert] = "Something went wrong"
         redirect_to root_path
+      end
+    else
+      flash[:alert] = "Cuisine not found. Please write a valid option."
+      redirect_to root_path
     end
   end
 end
-
