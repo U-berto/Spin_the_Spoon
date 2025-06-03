@@ -1,6 +1,6 @@
 class Party < ApplicationRecord
   belongs_to :user
-  belongs_to :restaurant
+  belongs_to :restaurant, optional: true
 
   has_many :user_parties
   has_many :users, through: :user_parties
