@@ -11,6 +11,7 @@ class PartiesController < ApplicationController
     if matched_cuisine && CUISINES.include?(matched_cuisine) # Ensure the match is valid
       @party = Party.new(category: matched_cuisine, user: current_user)
       if @party.save
+        # redirect_to party_path(@party)
         redirect_to pick_restaurant_path(@party), notice: "Party created for #{matched_cuisine}!"
       else
 
