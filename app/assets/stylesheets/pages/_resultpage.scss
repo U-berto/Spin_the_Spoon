@@ -3,3 +3,31 @@
   height: 200px; 
   object-fit: cover;
 }
+
+.star {
+  font-size: 16px; 
+  margin: 2px;
+}
+
+.filled {
+  color: gold;
+}
+
+.empty {
+  color: lightgray;
+}
+
+.restaurant-mid {
+  display: flex;
+  align-items: center;
+  gap: 40px; 
+}
+
+.restaurant-rating {
+  font-size: 22px;
+}
+
+.restaurant-location {
+  font-size: 18px;
+  color: #666;
+}
