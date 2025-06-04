@@ -26,7 +26,10 @@ class YelpSearchService
     {
       name: pick["name"],
       location: pick["location"]["address1"],
-      rating: pick["rating"]
+      rating: pick["rating"],
+      latitude: pick["coordinates"]["latitude"],
+      longitude: pick["coordinates"]["longitude"],
+      image: pick["image_url"]
     }
   end
 end
