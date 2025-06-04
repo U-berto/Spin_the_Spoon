@@ -1,16 +1,38 @@
-Hello Moto
-<img src="<%= @restaurant.image %>" alt="<%= @restaurant.name %>" class="restaurant-image">
-<ul>
-  <li><%= @restaurant.name %></li>
-  <li><%= @restaurant.category %></li>
-  <li><%= @restaurant.location %></li>
-  <li><%= @restaurant.rating  %></li>
-</ul>
-<div style="width: 100%; height: 350px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<div class="restaurant-container">
+  <h2>Picked Restaurant</h2>
 
-show page to party
-fetch
-show restaurant
+  <div class="restaurant-details">
+    <img src="<%= @restaurant.image %>" alt="<%= @restaurant.name %>" class="restaurant-image">
+
+     <div class="restaurant-info">
+        <h3><%= @restaurant.name %></h3>
+
+          <div class="restaurant-mid">
+            <div class="restaurant-rating">
+              <% 5.times do |i| %>
+                 <% if i < @restaurant.rating.round %>
+                 <span class="star filled">★</span> 
+                 <% else %>
+                 <span class="star empty">★</span> 
+                 <% end %>
+              <% end %>
+            </div>
+           <p><%= @restaurant.location %></p>
+          </div>
+
+        <p><%= @restaurant.category %></p>
+     </div>
+  </div>
+ </div>
+
+  <div style="width: 100%; height: 350px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+
+
+<%# show page to party %>
+<%# fetch %>
+<%# show restaurant %>
+
