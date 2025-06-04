@@ -1,12 +1,12 @@
 Hello Moto
-
+<img src="<%= @restaurant.image %>" alt="<%= @restaurant.name %>" class="restaurant-image">
 <ul>
   <li><%= @restaurant.name %></li>
   <li><%= @restaurant.category %></li>
   <li><%= @restaurant.location %></li>
   <li><%= @restaurant.rating  %></li>
 </ul>
-<div style="width: 100%; height: 600px;"
+<div style="width: 100%; height: 350px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
