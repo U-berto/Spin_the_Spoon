@@ -1,1 +1,5 @@
-
+<ol>
+  <% @party.members.each do |member|  %>
+ <li><%= member.username %></li>
+  <% end %>
+</ol>

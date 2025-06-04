@@ -1,11 +1,17 @@
 class FriendsController < ApplicationController
 
-  def index
-    @friendships = current_user.friends
-  end
+  # def index
+  #   @friendships = current_user.friends
+  # end
 
-  def create
-    @friend = 
-  # when adding a friend we will create a new friendship and current_user.friend(other_user)
-  end
+
+
+  /party/join/key(pin) --> show page party
+  controller party(join) party id from pin and current user --> create party
+
+
+  # def send_invite
+  #   @friendship = UserParty.new(party_id:current_user.party_id, user_id:??, accepted: false)
+  #   # user_id, party_id, boolean <-- accepted
+  # end
 end

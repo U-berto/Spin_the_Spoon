@@ -19,4 +19,22 @@ class PartiesController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def show
+    @party = Party.find(params[:id])
+    # encryptor = ActiveSupport::MessageEncryptor.new(ENV["RAILS_MASTER_KEY"], cipher: "aes-256-gcm"
+    @pin = @party.id
+  end
+
+  def join
+    @party = Party.find(params[:pin])
+    @user_1 = current_user
+      if @party.members.include?(current_user)
+        redirect_to party_path(@party)
+        flash[:alert] = "Already part of this party"
+      else
+      @invite = UserParty.create(user: @user_1, party: @party, accepted:true)
+      redirect_to party_path(@party)
+    end
+  end
 end

@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   resources :restaurants, only: [:show]
   resources :parties, only: [:create, :show]
-  resources :friends, only: [:index, :show, :create]
+
+   resources :parties, only: [], param: :pin do
+    member do
+      get :join
+    end
+  end
+  # resources :friends, only: [:index, :show, :create]
 
   devise_for :users
   root to: "pages#home"
