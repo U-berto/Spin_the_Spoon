@@ -1,5 +1,10 @@
-<ol>
+<ul>
   <% @party.members.each do |member|  %>
  <li><%= member.username %></li>
   <% end %>
-</ol>
+   <% if current_user.id == @party.user_id %>
+    <%= @url %>
+    <% end %>
+</ul>
+
+

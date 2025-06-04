@@ -1,6 +1,9 @@
 class PartiesController < ApplicationController
   include ApplicationHelper
 
+  PARTY_ID_SALT = "bananaloca"
+  PARTY_ID_HASH_LENGTH = 8
+
   def create
     user_input = params[:category_name].strip.capitalize # Get user input
     matched_cuisine = find_cuisine(user_input) # Try to match input
@@ -22,12 +25,17 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find(params[:id])
-    # encryptor = ActiveSupport::MessageEncryptor.new(ENV["RAILS_MASTER_KEY"], cipher: "aes-256-gcm"
-    @pin = @party.id
+    hashids = Hashids.new(PARTY_ID_SALT, PARTY_ID_HASH_LENGTH)
+    @pin = hashids.encode(@party.id)
+    @url = join_party_url(@pin)
   end
 
   def join
-    @party = Party.find(params[:pin])
+    pin = params[:pin]
+    hashids = Hashids.new(PARTY_ID_SALT, PARTY_ID_HASH_LENGTH)
+    party_id = hashids.decode(pin).first
+
+    @party = Party.find(party_id)
     @user_1 = current_user
       if @party.members.include?(current_user)
         redirect_to party_path(@party)
