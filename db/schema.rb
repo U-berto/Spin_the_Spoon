@@ -1,5 +1,4 @@
-ActiveRecord::Schema[7.1].define(version: 2025_06_03_103436) do
-  # These are extensions that must be enabled in order to support this database
+ActiveRecord::Schema[7.1].define(version: 2025_06_04_134517) do
   enable_extension "plpgsql"
 
   create_table "friendships", force: :cascade do |t|
@@ -29,6 +28,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_103436) do
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.string "image"
   end
 
   create_table "user_parties", force: :cascade do |t|

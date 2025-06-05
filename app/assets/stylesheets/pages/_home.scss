@@ -1,1 +1,64 @@
-// Specific CSS for your home-page
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 4rem; 
+}
+
+.search-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.search-bar form {
+  display: flex;
+  gap: 0.5rem;
+  width: 80%;
+}
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+}
+.search-bar button {
+  padding: 10px;
+}
+
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1rem;
+  justify-items: center;
+  width: 80%;
+}
+
+.categories-container .category-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+}
+.categories-container .category-button:last-child {
+  grid-column: span 2; 
+}
+
+.difficulty-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+.nav-item {
+  color: white;
+  font-size: 1.5rem;
+}

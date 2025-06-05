@@ -5,11 +5,11 @@ class PartiesController < ApplicationController
   PARTY_ID_HASH_LENGTH = 8
 
   def create
-    user_input = params[:category_name].strip.capitalize # Get user input
-    matched_cuisine = find_cuisine(user_input) # Try to match input
+    user_input = params[:category_name].strip.capitalize  
+    matched_cuisine = find_cuisine(user_input) 
 
-    if matched_cuisine && CUISINES.include?(matched_cuisine) # Ensure the match is valid
-      @party = Party.new(category: matched_cuisine, user: current_user)
+    if matched_cuisine && CUISINES.include?(matched_cuisine) 
+      @party = Party.new(category: matched_cuisine, user: current_user) #add the risk-level in the creation of the party
       if @party.save
         # redirect_to party_path(@party)
         redirect_to pick_restaurant_path(@party), notice: "Party created for #{matched_cuisine}!"

@@ -12,7 +12,10 @@ class RestaurantsApiController < ApplicationController
         name: yelp_data[:name],
         location: yelp_data[:location],
         category: category,
-        rating: yelp_data[:rating]
+        rating: yelp_data[:rating],
+        latitude: yelp_data[:latitude],
+        longitude: yelp_data[:longitude],
+        image: yelp_data[:image]
       )
 
       party.update!(restaurant_id: restaurant.id)
