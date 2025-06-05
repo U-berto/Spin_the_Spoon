@@ -1,42 +1,40 @@
-  <div class="homepage-container">
-    <div class="search-bar-container">
-      <form class="simple_form search" action="/parties" method="post">
-        <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
-          <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Type a cuisine..." />
-          <button type="submit" class="btn d-flex align-items-center justify-content-center">
-            <i class="fas fa-search text-secondary"></i>
-          </button>
+<div class="homepage-container">
+  <div class="search-bar-container" data-controller="party-form">
+    <%= simple_form_for Party.new, data: { "party-form-target": "form"} do |f| %>     
+      <div class="difficulty-container">
+        <div class="form-group mb-5 fw-bold">
+          <div class="mb-3 select optional difficulty_level"><label class="form-label select optional" for="difficulty_level">Difficulty</label><select class="form-select select optional" name="risk_level" id="difficulty_level">
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+            </select>
+          </div>
         </div>
-      </form>
-    </div>
-
-   <div class="categories-container">
-    <% @categories.each do |category| %>
-      <div>
-        <%= form_with url: parties_path, method: :post do |f| %>
-        <%= f.hidden_field :category_name, value: category %>
-        <%= f.submit "#{category}" %>
-       <% end %>
+      </div>
+      
+      <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
+        <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Type a cuisine..." data-party-form-target="categoryInput" />
+        <button type="submit" class="btn d-flex align-items-center justify-content-center">
+          <i class="fas fa-search text-secondary"></i>
+        </button>
       </div>
     <% end %>
 
-
-    <div class="difficulty-container">
-      <div class="form-group mb-5 fw-bold">
-          <div class="mb-3 select optional difficulty_level"><label class="form-label select optional" for="difficulty_level">Difficulty</label><select class="form-select select optional" name="difficulty[level]" id="difficulty_level">
-            <option value="1">Easy</option>
-            <option value="2">Medium</option>
-            <option value="3">Hard</option>
-            </select>
-          </div>
-      </div>
-   </div>
-
-    <div class="bottom-nav">
-      <a href="/" class="nav-item"><i class="fas fa-home"></i></a>
-      <a href="/profile" class="nav-item"><i class="fas fa-user"></i></a>
-      <a href="/friends" class="nav-item"><i class="fas fa-users"></i></a>
+    <div class="categories-container">
+      <% @categories.each do |category| %>
+        <button data-action="click->party-form#onCategoryClick">
+          <%= category %>
+        </button>
+      <% end %>
     </div>
-
-
+  </div>
+  
+  <div class="bottom-nav">
+    <a href="/" class="nav-item"><i class="fas fa-home"></i></a>
+    <a href="/profile" class="nav-item"><i class="fas fa-user"></i></a>
+    <a href="/friends" class="nav-item"><i class="fas fa-users"></i></a>
+  </div>
 </div>
+
+
+
