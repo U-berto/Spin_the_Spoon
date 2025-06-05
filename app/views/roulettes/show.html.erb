@@ -1,0 +1,7 @@
+The wheel is spinning like crazy....
+
+<%= javascript_tag do %>
+  setTimeout(function() {
+    window.location.href = "<%= pick_restaurant_path(@party) %>";
+  }, 10_000);
+<% end %>
