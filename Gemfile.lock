@@ -342,8 +342,8 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass (~> 6.1)
   fuzzy_match
-  hashids
   geocoder
+  hashids
   httparty
   importmap-rails (~> 1.2.3)
   jbuilder
