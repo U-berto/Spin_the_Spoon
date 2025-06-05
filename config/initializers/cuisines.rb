@@ -6,3 +6,4 @@ CUISINES = [
   "Finnish", "Russian", "Polish", "Brazilian", "Argentinian", "Peruvian", "Colombian",
   "Chilean", "Venezuelan", "Ecuadorian", "Bolivian", "Paraguayan", "Uruguayan", "Discover Local"
 ]
+

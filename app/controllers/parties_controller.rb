@@ -10,11 +10,11 @@ class PartiesController < ApplicationController
 
     if matched_cuisine && CUISINES.include?(matched_cuisine)
       @party = Party.new(category: matched_cuisine, user: current_user) #add the risk-level in the creation of the party
+
       if @party.save
         #   pick_restaurant_path(@party)
         redirect_to party_path(@party), notice: "Party created for #{matched_cuisine}!"
       else
-
         flash[:alert] = "Something went wrong"
         redirect_to root_path
       end
@@ -29,6 +29,12 @@ class PartiesController < ApplicationController
     hashids = Hashids.new(PARTY_ID_SALT, PARTY_ID_HASH_LENGTH)
     @pin = hashids.encode(@party.id)
     @url = join_party_url(@pin)
+
+    @nearby_users = []
+
+    if @party.category == "Discover Local" && current_user.latitude && current_user.longitude
+      @nearby_users = User.near([current_user.latitude, current_user.longitude], 50).where(public: true).where.not(id: current_user.id)
+    end
   end
 
   def join
@@ -38,12 +44,12 @@ class PartiesController < ApplicationController
 
     @party = Party.find(party_id)
     @user_1 = current_user
-      if @party.members.include?(current_user)
-        redirect_to party_path(@party)
-        flash[:alert] = "Already part of this party"
-      else
-      @invite = UserParty.create(user: @user_1, party: @party, accepted:true)
+    if @party.members.include?(current_user)
       redirect_to party_path(@party)
+      flash[:alert] = "Already part of this party"
+    else
+    @invite = UserParty.create(user: @user_1, party: @party, accepted:true)
+    redirect_to party_path(@party)
     end
   end
 end
