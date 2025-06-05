@@ -7,13 +7,19 @@
   <% end %>
 </ul>
 
-
 <% if current_user.id == @party.user_id %>
   <%= link_to "Spin da Spoon!", party_roulette_path(@party) %>
 <% end %>
 
-<%# pick_restaurant_path(@party)
-<%# button that says redirect_to , notice: "Party created for #{matched_cuisine}!" %>
-<% if @party.category == "Discover Local" %>
-  <%= BANANA %>
-<%end %>
+<% if @nearby_users.any? %>
+  <h2>Nearby users you can invite</h2>
+    <ul>
+      <% @nearby_users.each do |user| %>
+        <li>
+          <%= user.username %> –
+          <%= user.distance_to(current_user).round(2) %> km away
+          <%# <%= button_to "Invite", user_invitations_path(user_id: user.id, party_id: @party.id), method: :post %>
+        </li>
+      <% end %>
+    </ul>
+<% end %>
