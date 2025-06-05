@@ -19,13 +19,12 @@ class YelpSearchService
     responses = response.parsed_response["businesses"]
     @businesses = []
     responses.each do |response|
-      instantiate_restaurant_from_yelp(response)
-      @businesses << response
+      @businesses << instantiate_restaurant_from_yelp(response)
     end
   end
 
   def options
-    return @businesses if risk_level == "2"
+    return @businesses if @risk_level == "1"
 
     response = self.class.get("/businesses/search", headers: @headers, query: {
       term: "restaurant",
@@ -36,8 +35,7 @@ class YelpSearchService
     businesses = response.parsed_response["businesses"]
     choices = []
     businesses.each do |choice|
-      instantiate_restaurant_from_yelp(choice)
-      choices << choice
+      choices << instantiate_restaurant_from_yelp(choice)
     end
     restaurants = Restaurant.where(category: @category).where("rating <= 3")
     choices + restaurants
@@ -45,7 +43,6 @@ class YelpSearchService
 
   def random_restaurant
     raise "No results from Yelp" if @businesses.blank?
-
     @businesses.sample
   end
 
