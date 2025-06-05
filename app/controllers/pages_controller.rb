@@ -4,5 +4,4 @@ class PagesController < ApplicationController
   def home
     @categories = ["Arabic", "Asian", "European", "South American", "Discover local"]
   end
-
 end

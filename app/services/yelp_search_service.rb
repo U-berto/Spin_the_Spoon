@@ -8,17 +8,20 @@ class YelpSearchService
     @headers = {
       "Authorization" => "Bearer #{ENV['YELP_API_KEY']}"
     }
-  end
 
-  def random_restaurant
     response = self.class.get("/businesses/search", headers: @headers, query: {
       term: @category,
       location: @address,
       limit: 10
     })
-
     @businesses = response.parsed_response["businesses"]
+  end
 
+  def options
+     @businesses
+  end
+
+  def random_restaurant
     raise "No results from Yelp" if @businesses.blank?
 
     pick = @businesses.sample

@@ -1,0 +1,16 @@
+The wheel is spinning like crazy....
+
+<ul>
+  <% @businesses.each do |restaurant| %>
+    <li>
+      <strong><%= restaurant["name"] %></strong>
+      — Rating: <%= restaurant["rating"] %>
+    </li>
+  <% end %>
+</ul>
+
+<%= javascript_tag do %>
+  setTimeout(function() {
+    window.location.href = "<%= restaurant_path(@restaurant) %>";
+  }, 10_000);
+<% end %>
