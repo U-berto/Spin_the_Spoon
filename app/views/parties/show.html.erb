@@ -7,5 +7,12 @@
     <% end %>
 </ul>
 
-<%# <% if current_user.id == @party.user_id %>
-<%# button that says redirect_to pick_restaurant_path(@party), notice: "Party created for #{matched_cuisine}!" %>
+
+<% if current_user.id == @party.user_id %>
+  <%= link_to "Spin da Spoon!", party_roulette_path(@party) %>
+<% end %>
+
+<%# pick_restaurant_path(@party)
+<%# button that says redirect_to , notice: "Party created for #{matched_cuisine}!" %>
+<% if @party.category == "Discover Local" %>
+<%= BANANA %>

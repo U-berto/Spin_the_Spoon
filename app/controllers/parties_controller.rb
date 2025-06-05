@@ -11,8 +11,8 @@ class PartiesController < ApplicationController
     if matched_cuisine && CUISINES.include?(matched_cuisine)
       @party = Party.new(category: matched_cuisine, user: current_user) #add the risk-level in the creation of the party
       if @party.save
-        # redirect_to party_path(@party)
-        redirect_to pick_restaurant_path(@party), notice: "Party created for #{matched_cuisine}!"
+        #   pick_restaurant_path(@party)
+        redirect_to party_path(@party), notice: "Party created for #{matched_cuisine}!"
       else
 
         flash[:alert] = "Something went wrong"
