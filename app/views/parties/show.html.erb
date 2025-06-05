@@ -1,1 +1,11 @@
+<ul>
+  <% @party.members.each do |member|  %>
+ <li><%= member.username %></li>
+  <% end %>
+   <% if current_user.id == @party.user_id %>
+    <%= @url %>
+    <% end %>
+</ul>
 
+<%# <% if current_user.id == @party.user_id %>
+<%# button that says redirect_to pick_restaurant_path(@party), notice: "Party created for #{matched_cuisine}!" %>
