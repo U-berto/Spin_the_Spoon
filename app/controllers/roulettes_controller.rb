@@ -6,8 +6,9 @@ class RoulettesController < ApplicationController
     yelp_service = YelpSearchService.new(category: @party.category, address: address)
 
     @businesses = yelp_service.options
-    picked_restaurant = yelp_service.random_restaurant
 
+    picked_restaurant = yelp_service.random_restaurant
+    picked_restaurant.save
     @restaurant = Restaurant.create!(
       name: picked_restaurant[:name],
       location: picked_restaurant[:location],
