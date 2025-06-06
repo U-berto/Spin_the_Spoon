@@ -5,8 +5,6 @@ class PartiesController < ApplicationController
   PARTY_ID_HASH_LENGTH = 8
 
   def create
-    if matched_cuisine && CUISINES.include?(matched_cuisine)
-      @party = Party.new(category: matched_cuisine, user: current_user) #add the risk-level in the creation of the party
 
     user_input = params[:category_name].strip.capitalize
     matched_cuisine = find_cuisine(user_input)
