@@ -1,3 +1,4 @@
+UserParty.destroy_all
 Party.destroy_all
 Restaurant.destroy_all
 User.destroy_all
@@ -8,7 +9,7 @@ user3 = User.create!(email: "carla@example.com", password: "password", username:
 user4 = User.create!(email: "david@example.com", password: "password", username: "david", address: "Avinguda Diagonal 103, Barcelona", public: false)
 user5 = User.create!(email: "elena@example.com", password: "password", username: "elena", address: "Carrer de Sants 66, Barcelona")
 
-restaurant36 = Restaurant.create!(name: "Sakura", category: "Asian", location: "Carrer de Balmes 13, Barcelona", rating: 2, latitude: 41.387768, longitude: 2.140713)
+restaurant36 = Restaurant.create!(name: "Sakura", category: "Asian", location: "Carrer de Balmes 13, Barcelona", rating: 2, latitude: 41.387768, longitude: 2.140713, image:)
 restaurant37 = Restaurant.create!(name: "Wok & Roll", category: "Asian", location: "Carrer de Tallers 29, Barcelona", rating: 3, latitude: 41.395073, longitude: 2.133829)
 restaurant38 = Restaurant.create!(name: "Dragon Express", category: "Asian", location: "La Rambla 47, Barcelona", rating: 1, latitude: 41.375321, longitude: 2.156489)
 restaurant39 = Restaurant.create!(name: "Zen Garden", category: "Asian", location: "Passeig de Gràcia 76, Barcelona", rating: 2, latitude: 41.396823, longitude: 2.174562)
@@ -51,3 +52,18 @@ restaurant72 = Restaurant.create!(name: "Gusto Italiano", category: "Italian", l
 restaurant73 = Restaurant.create!(name: "Bella Napoli", category: "Italian", location: "Carrer de Pau Claris 13, Barcelona", rating: 1, latitude: 41.395102, longitude: 2.162360)
 restaurant74 = Restaurant.create!(name: "Viva Italia", category: "Italian", location: "Carrer d'Aragó 97, Barcelona", rating: 3, latitude: 41.409765, longitude: 2.182049)
 restaurant75 = Restaurant.create!(name: "Ciao Ciao", category: "Italian", location: "Carrer del Parlament 6, Barcelona", rating: 2, latitude: 41.378642, longitude: 2.147935)
+restaurant76 = Restaurant.create!(name: "La Bodega del Barrio", category: "tapas", location: "Carrer de Blai 17, Barcelona", rating: 3, latitude: 41.374512, longitude: 2.161783)
+restaurant77 = Restaurant.create!(name: "El Rincón de las tapas", category: "tapas", location: "Carrer de Balmes 198, Barcelona", rating: 2, latitude: 41.393102, longitude: 2.153447)
+restaurant78 = Restaurant.create!(name: "Casa de Tapas Cañota", category: "tapas", location: "Carrer de Lleida 7, Barcelona", rating: 1, latitude: 41.377842, longitude: 2.156920)
+restaurant79 = Restaurant.create!(name: "Bar Rosaleda", category: "tapas", location: "Carrer de Sant Pere Més Baix 62, Barcelona", rating: 3, latitude: 41.385623, longitude: 2.181207)
+restaurant80 = Restaurant.create!(name: "El Xampanyet", category: "tapas", location: "Carrer de Montcada 22, Barcelona", rating: 2, latitude: 41.385179, longitude: 2.182963)
+restaurant81 = Restaurant.create!(name: "Quimet & Quimet", category: "tapas", location: "Carrer del Poeta Cabanyes 25, Barcelona", rating: 1, latitude: 41.369754, longitude: 2.151374)
+restaurant82 = Restaurant.create!(name: "Bar del Pla", category: "tapas", location: "Carrer de Montcada 2, Barcelona", rating: 3, latitude: 41.385501, longitude: 2.182780)
+restaurant83 = Restaurant.create!(name: "Bar Jai-Ca", category: "tapas", location: "Carrer de Ginebra 13, Barcelona", rating: 2, latitude: 41.375400, longitude: 2.180016)
+restaurant84 = Restaurant.create!(name: "El Pintón", category: "tapas", location: "Carrer de l’Argenteria 37, Barcelona", rating: 2, latitude: 41.383219, longitude: 2.181046)
+restaurant85 = Restaurant.create!(name: "La Cova Fumada", category: "tapas", location: "Carrer del Baluard 56, Barcelona", rating: 1, latitude: 41.381465, longitude: 2.183102)
+restaurant86 = Restaurant.create!(name: "Bar Mut", category: "tapas", location: "Carrer de Pau Claris 192, Barcelona", rating: 3, latitude: 41.394023, longitude: 2.166532)
+restaurant87 = Restaurant.create!(name: "Cerveseria Catalana", category: "tapas", location: "Carrer de Mallorca 236, Barcelona", rating: 2, latitude: 41.393764, longitude: 2.166496)
+restaurant88 = Restaurant.create!(name: "Bar La Plata", category: "tapas", location: "Carrer de la Mercè 28, Barcelona", rating: 1, latitude: 41.377972, longitude: 2.177412)
+restaurant89 = Restaurant.create!(name: "Tapeo", category: "tapas", location: "Carrer de Montcada 29, Barcelona", rating: 3, latitude: 41.385347, longitude: 2.183753)
+restaurant90 = Restaurant.create!(name: "La Bodegueta", category: "tapas", location: "Carrer de la Diputació 249, Barcelona", rating: 2, latitude: 41.388580, longitude: 2.162556)

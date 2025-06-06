@@ -1,0 +1,29 @@
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% elsif flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
+<h1>Your Invitation</h1>
+
+<% if @latest_invitation.nil? %>
+  <p>You have no invitations at the moment.</p>
+<% else %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Party: <%= @latest_invitation.party.category %></h5>
+
+      <% if @latest_invitation.accepted.nil? %>
+        <p class="card-text text-warning">⏳ Pending</p>
+        <%= button_to "Accept", accept_user_party_path(@latest_invitation), method: :patch, class: "btn btn-success btn-sm" %>
+        <%= button_to "Decline", decline_user_party_path(@latest_invitation), method: :patch, class: "btn btn-danger btn-sm ms-2" %>
+      <% elsif @latest_invitation.accepted == true %>
+        <p class="card-text text-dark">✅ Accepted</p>
+        <%= link_to "Go to Party", party_path(@latest_invitation.party), class: "btn btn-outline-primary btn-sm" %>
+      <% else %>
+        <p class="card-text text-dark">❌ Declined</p>
+        <%= link_to "Go to Party", party_path(@latest_invitation.party), class: "btn btn-outline-primary btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

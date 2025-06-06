@@ -22,19 +22,27 @@
       <%= link_to "🎲 Spin da Spoon!", party_roulette_path(@party), class: "spin-button" %>
     </div>
   <% end %>
-
+</div>
+<% if current_user.id == @party.user_id %>
   <% if @nearby_users.any? %>
-    <div class="nearby-users-section">
-      <h2 class="section-heading">Nearby users you can invite</h2>
-      <ul class="nearby-user-list">
+    <h2>Nearby users you can invite</h2>
+      <ul>
         <% @nearby_users.each do |user| %>
-          <li class="nearby-user-item">
-            <span><%= user.username %></span> –
-            <span><%= user.distance_to(current_user).round(2) %> km away</span>
+          <% invitation = @existing_user_parties[user.id] %>
+          <li>
+            <%= user.username %> –
+            <%= user.distance_to(current_user).round(2) %> km away
+            <% if invitation.nil? %>
+              <%= button_to "Invite", user_parties_path(user_id: user.id, party_id: @party.id), method: :post, class: "btn btn-primary" %>
+            <% elsif invitation.accepted == true %>
+              <span class="badge bg-light text-dark">✅ Accepted</span>
+            <% elsif invitation.accepted == false %>
+              <span class="badge bg-light text-dark">❌ Declined</span>
+            <% else %>
+              <span class="badge bg-light text-dark">⏳ Pending</span>
+            <% end %>
           </li>
         <% end %>
       </ul>
-    </div>
   <% end %>
-
-</div>
+<% end %>
