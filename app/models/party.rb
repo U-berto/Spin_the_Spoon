@@ -5,7 +5,11 @@ class Party < ApplicationRecord
   has_many :users, through: :user_parties
 
   def members
-    result = users.to_a
+    accepted_user_parties = []
+    user_parties.each do |up|
+      accepted_user_parties << up if up.accepted
+    end
+    result = accepted_user_parties.map(&:user)
     result.push(admin)
     result
   end
