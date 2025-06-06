@@ -1,0 +1,89 @@
+.party-page {
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.party-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.section-heading {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.party-members-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.member-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.member-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eaeaea;
+  font-weight: 800;
+  color: #555;
+}
+
+.party-url {
+  margin-top: 15px;
+  font-size: 14px;
+  word-wrap: break-word;
+  color: #777;
+}
+
+.roulette-action {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.spin-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #b20a0a;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.spin-button:hover {
+  background-color: #500000;
+}
+
+.nearby-users-section {
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.nearby-user-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.nearby-user-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  color: #555;
+}
