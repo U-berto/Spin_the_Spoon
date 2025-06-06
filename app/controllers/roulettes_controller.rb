@@ -3,10 +3,12 @@ class RoulettesController < ApplicationController
     @party = Party.find(params[:party_id])
     address = @party.user.address
 
-    yelp_service = YelpSearchService.new(category: @party.category, address: address)
+    yelp_service = YelpSearchService.new(category: @party.category, address: address, risk_level: @party.risk_level)
 
     @businesses = yelp_service.options
+
     picked_restaurant = yelp_service.random_restaurant
+    picked_restaurant.save
 
     @restaurant = Restaurant.create!(
       name: picked_restaurant[:name],
