@@ -37,7 +37,7 @@ class YelpSearchService
     businesses.each do |choice|
       choices << instantiate_restaurant_from_yelp(choice)
     end
-    restaurants = Restaurant.where(category: @category).where("rating <= 3")
+    restaurants = Restaurant.where(category: @category).where("rating <= 3").limit(5)
     choices + restaurants
   end
 
