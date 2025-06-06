@@ -3,47 +3,41 @@ class YelpSearchService
   base_uri 'https://api.yelp.com/v3'
 
   def initialize(category:, address:, risk_level:)
-    @category = category
+    @category = category == "Discover local" ? "tapas" : category
     @address = address
     @risk_level = risk_level
     @headers = {
       "Authorization" => "Bearer #{ENV['YELP_API_KEY']}"
     }
-
-    response = self.class.get("/businesses/search", headers: @headers, query: {
-      term: "restaurant",
-      categories: @category,
-      location: @address,
-      limit: 10
-    })
-    responses = response.parsed_response["businesses"]
-    @businesses = []
-    responses.each do |response|
-      @businesses << instantiate_restaurant_from_yelp(response)
-    end
   end
 
   def options
-    return @businesses if @risk_level == "1"
+    return @options if @options.present?
 
     response = self.class.get("/businesses/search", headers: @headers, query: {
-      term: "restaurant",
-      categories: @category,
+      term: @category,
+      categories: "restaurants",
       location: @address,
-      limit: 5
+      limit: 20
     })
-    businesses = response.parsed_response["businesses"]
+
+    businesses = response.parsed_response["businesses"].sample(@risk_level == "1" ? 10 : 5)
+
+
     choices = []
     businesses.each do |choice|
       choices << instantiate_restaurant_from_yelp(choice)
     end
-    restaurants = Restaurant.where(category: @category).where("rating <= 3").limit(5)
-    choices + restaurants
+
+
+    restaurants = Restaurant.where(category: @category).where("rating <= 3").limit(10 - businesses.length)
+    @options = choices + restaurants
+
+    @options
   end
 
   def random_restaurant
-    raise "No results from Yelp" if @businesses.blank?
-    @businesses.sample
+    options.sample
   end
 
   def instantiate_restaurant_from_yelp(yelp_data)

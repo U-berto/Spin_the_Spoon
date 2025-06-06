@@ -1,13 +1,16 @@
-The wheel is spinning like crazy....
 
-<ul>
-  <% @businesses.each do |restaurant| %>
-    <li>
-      <strong><%= restaurant["name"] %></strong>
-      — Rating: <%= restaurant["rating"] %>
-    </li>
-  <% end %>
-</ul>
+
+<div class="roulette-container">
+  <%= image_tag "roulette.gif", alt: "Roulette spinning", id: "roulette-gif" %>
+  <ul>
+    <% @businesses.each do |restaurant| %>
+      <li>
+        <strong><%= restaurant["name"] %></strong>
+        — Rating: <%= restaurant["rating"] %>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <%= javascript_tag do %>
   setTimeout(function() {
