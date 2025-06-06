@@ -9,7 +9,7 @@ user3 = User.create!(email: "carla@example.com", password: "password", username:
 user4 = User.create!(email: "david@example.com", password: "password", username: "david", address: "Avinguda Diagonal 103, Barcelona", public: false)
 user5 = User.create!(email: "elena@example.com", password: "password", username: "elena", address: "Carrer de Sants 66, Barcelona")
 
-restaurant36 = Restaurant.create!(name: "Sakura", category: "Asian", location: "Carrer de Balmes 13, Barcelona", rating: 2, latitude: 41.387768, longitude: 2.140713, image:)
+restaurant36 = Restaurant.create!(name: "Sakura", category: "Asian", location: "Carrer de Balmes 13, Barcelona", rating: 2, latitude: 41.387768, longitude: 2.140713)
 restaurant37 = Restaurant.create!(name: "Wok & Roll", category: "Asian", location: "Carrer de Tallers 29, Barcelona", rating: 3, latitude: 41.395073, longitude: 2.133829)
 restaurant38 = Restaurant.create!(name: "Dragon Express", category: "Asian", location: "La Rambla 47, Barcelona", rating: 1, latitude: 41.375321, longitude: 2.156489)
 restaurant39 = Restaurant.create!(name: "Zen Garden", category: "Asian", location: "Passeig de Gràcia 76, Barcelona", rating: 2, latitude: 41.396823, longitude: 2.174562)
