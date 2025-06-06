@@ -5,7 +5,6 @@ class PartiesController < ApplicationController
   PARTY_ID_HASH_LENGTH = 8
 
   def create
-
     user_input = params[:category_name].strip.capitalize
     matched_cuisine = find_cuisine(user_input)
     risk_level = params[:risk_level]
@@ -36,6 +35,7 @@ class PartiesController < ApplicationController
 
     if @party.category == "Discover Local" && current_user.latitude && current_user.longitude
       @nearby_users = User.near([current_user.latitude, current_user.longitude], 50).where(public: true).where.not(id: current_user.id)
+      @existing_user_parties = UserParty.where(party: @party, user_id: @nearby_users.map(&:id)).index_by(&:user_id)
     end
   end
 
