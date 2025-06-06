@@ -3,7 +3,7 @@
     <%= simple_form_for Party.new, data: { "party-form-target": "form"} do |f| %>
       <div class="difficulty-container">
         <div class="form-group mb-5 fw-bold">
-          <div class="mb-3 select optional difficulty_level"><label class="form-label select optional" for="difficulty_level">Difficulty</label><select class="form-select select optional" name="risk_level" id="difficulty_level">
+          <div class="mb-3 select optional difficulty_level"><label class="form-label select optional" for="difficulty_level">Select the level</label><select class="form-select select optional" name="risk_level" id="difficulty_level">
             <option value="1">Rookie</option>
             <option value="2">Pro</option>
             </select>
@@ -21,7 +21,7 @@
 
     <div class="categories-container">
       <% @categories.each do |category| %>
-        <button data-action="click->party-form#onCategoryClick">
+        <button class="category-button" data-action="click->party-form#onCategoryClick">
           <%= category %>
         </button>
       <% end %>

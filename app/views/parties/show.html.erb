@@ -1,25 +1,40 @@
-<ul>
-  <% @party.members.each do |member|  %>
-   <li><%= member.username %></li>
-  <% end %>
-  <% if current_user.id == @party.user_id %>
-    <%= @url %>
-  <% end %>
-</ul>
+<div class="party-page">
 
-<% if current_user.id == @party.user_id %>
-  <%= link_to "Spin da Spoon!", party_roulette_path(@party) %>
-<% end %>
+  <h1 class="party-title">🎉 Your Party</h1>
 
-<% if @nearby_users.any? %>
-  <h2>Nearby users you can invite</h2>
-    <ul>
-      <% @nearby_users.each do |user| %>
-        <li>
-          <%= user.username %> –
-          <%= user.distance_to(current_user).round(2) %> km away
-          <%# <%= button_to "Invite", user_invitations_path(user_id: user.id, party_id: @party.id), method: :post %>
-        </li>
+  <div class="party-members-card">
+    <h2 class="section-heading">Members</h2>
+    <ul class="member-list">
+      <% @party.members.each do |member| %>
+        <li class="member-item"><%= member.username %></li>
       <% end %>
     </ul>
-<% end %>
+
+    <% if current_user.id == @party.user_id %>
+      <div class="party-url">
+        <%= @url %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user.id == @party.user_id %>
+    <div class="roulette-action">
+      <%= link_to "🎲 Spin da Spoon!", party_roulette_path(@party), class: "spin-button" %>
+    </div>
+  <% end %>
+
+  <% if @nearby_users.any? %>
+    <div class="nearby-users-section">
+      <h2 class="section-heading">Nearby users you can invite</h2>
+      <ul class="nearby-user-list">
+        <% @nearby_users.each do |user| %>
+          <li class="nearby-user-item">
+            <span><%= user.username %></span> –
+            <span><%= user.distance_to(current_user).round(2) %> km away</span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+</div>
