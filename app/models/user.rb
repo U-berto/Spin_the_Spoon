@@ -12,4 +12,15 @@ class User < ApplicationRecord
     Friendship.create(user: self, friend: other_user)
     Friendship.create(user: other_user, friend: self)
   end
+
+  def all_parties
+    res = admin_parties + joined_parties
+    res.sort_by do |party|
+      party.created_at
+    end
+  end
+
+  def joined_parties
+    user_parties.where(accepted: true).map(&:party)
+  end
 end
