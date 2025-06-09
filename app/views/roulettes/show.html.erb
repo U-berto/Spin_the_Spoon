@@ -1,19 +1,27 @@
+<%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
 
+<div class="spinner-container" data-controller="roulette">
+  <div id="spinner-wrapper">
+    <%= image_tag "Spin-animation.png",
+          id:     "barrel",
+          width:  500,
+          height: 500,
+          alt:    "Spoon barrel" %>
 
-<div class="roulette-container">
-  <%= image_tag "roulette.gif", alt: "Roulette spinning", id: "roulette-gif" %>
-  <ul>
-    <% @businesses.each do |restaurant| %>
-      <li>
-        <strong><%= restaurant["name"] %></strong>
-        — Rating: <%= restaurant["rating"] %>
-      </li>
-    <% end %>
-  </ul>
+    <ul id="rating-list">
+      <% @businesses.each_with_index do |biz, i| %>
+        <li class="rating-slot"
+            data-index="<%= i %>"
+            data-id="<%= biz['id'] %>">
+          <%= raw('★' * biz['rating'].to_i) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <button id="spin-btn">Spin for me!</button>
 </div>
 
-<%= javascript_tag do %>
-  setTimeout(function() {
-    window.location.href = "<%= restaurant_path(@restaurant) %>";
-  }, 10_000);
-<% end %>
+<script>
+
+</script>

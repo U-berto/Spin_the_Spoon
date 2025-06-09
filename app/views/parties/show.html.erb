@@ -19,7 +19,7 @@
 
   <% if current_user.id == @party.user_id %>
     <div class="roulette-action">
-      <%= link_to "🎲 Spin da Spoon!", party_roulette_path(@party), class: "spin-button" %>
+      <%= link_to "🎲 Let's GO", party_roulette_path(@party), class: "spin-button" %>
     </div>
   <% end %>
 </div>
