@@ -3,14 +3,25 @@
     <%= simple_form_for Party.new, data: { "party-form-target": "form"} do |f| %>
       <div class="difficulty-container">
         <div class="form-group mb-5 fw-bold">
-          <div class="mb-3 select optional difficulty_level"><label class="form-label select optional" for="difficulty_level">Select the level</label><select class="form-select select optional" name="risk_level" id="difficulty_level">
+          <div class="mb-3 select optional difficulty_level"><label for="difficulty_level" class="form-label">
+              Select the level
+              <span class="info-tooltip" data-tooltip="• ROOKIE → 10 guaranteed top‐rated restaurants
+            • PRO → 5 top‐rated + 5 adventurous hidden gems">ℹ️</span>
+          </label><select class="form-select select optional" name="risk_level" id="difficulty_level">
             <option value="1">Rookie</option>
             <option value="2">Pro</option>
             </select>
+            <div class="difficulty-visual d-flex justify-content-center gap-4 mt-3">
+            <div class="difficulty-level" data-value="1">
+              <%= image_tag "EASY.png", alt: "Empty barrel – Rookie", class: "barrel-img" %>
+              <div class="label">Rookie</div>
+            </div>
+            <div class="difficulty-level" data-value="2">
+              <%= image_tag "HARD.png", alt: "Full barrel – Pro", class: "barrel-img" %>
+              <div class="label">Pro</div>
+            </div>
           </div>
-        </div>
       </div>
-
       <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
         <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Type a cuisine..." data-party-form-target="categoryInput" />
         <button type="submit" class="btn d-flex align-items-center justify-content-center">
@@ -34,3 +45,20 @@
     <a href="/friends" class="nav-item"><i class="fas fa-users"></i></a>
   </div>
 </div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    var select = document.getElementById("difficulty_level"),
+        levels = document.querySelectorAll(".difficulty-level");
+
+    function updateVisual(){
+      levels.forEach(function(el){
+        el.classList.toggle("active", el.dataset.value === select.value);
+      });
+    }
+
+    select.addEventListener("change", updateVisual);
+    updateVisual();  // highlight on page load
+  });
+</script>
