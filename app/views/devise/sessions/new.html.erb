@@ -1,5 +1,5 @@
 <div class="auth-form-container">
-  <h2 class="auth-title">Log in</h2>
+  <h2 class="auth-title">Sign in</h2>
 
  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f| %>
     <div class="form-inputs">
@@ -14,7 +14,7 @@
   </div>
 
  <div class="form-actions">
-      <%= f.button :submit, "Log in", class: "auth-btn" %>
+      <%= f.button :submit, "Sign in", class: "auth-btn" %>
     </div>
   <% end %>
 
