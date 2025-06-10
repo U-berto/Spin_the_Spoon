@@ -1,0 +1,62 @@
+.spinner-container {
+  width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+#spinner-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  transform-origin: center center;
+  transition:      transform 5s cubic-bezier(0.33,1,0.68,1);
+}
+
+#barrel {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#rating-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rating-slot {
+  background-color: rgb(50, 49, 49);
+  // padding-left: 6px;
+  // padding-right: 15px;
+  border-radius: 5px;
+  color: gold;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 2;
+  width: 80px; /* snug in bowl */
+}
+
+/* Hard-coded centers for each spoon bowl */
+.rating-slot[data-index="0"] { top: 10%; left: 50%; }
+.rating-slot[data-index="1"] { top: 20%; left: 75%; }
+.rating-slot[data-index="2"] { top: 40%; left: 85%; }
+.rating-slot[data-index="3"] { top: 60%; left: 85%; }
+.rating-slot[data-index="4"] { top: 80%; left: 75%; }
+.rating-slot[data-index="5"] { top: 90%; left: 50%; }
+.rating-slot[data-index="6"] { top: 80%; left: 25%; }
+.rating-slot[data-index="7"] { top: 60%; left: 15%; }
+.rating-slot[data-index="8"] { top: 40%; left: 15%; }
+.rating-slot[data-index="9"] { top: 20%; left: 25%; }
+
+.rating-slot.selected {
+  border: 2px solid gold;
+  border-radius: 6px;
+}
+
+.rating-slot.dimmed {
+  opacity: 0.4;
+}

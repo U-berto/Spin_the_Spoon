@@ -4,7 +4,7 @@ class YelpSearchService
 
   def initialize(category:, address:, risk_level:)
     @category = category == "Discover local" ? "tapas" : category
-    @address = address
+    @address = address || "barcelona"
     @risk_level = risk_level
     @headers = {
       "Authorization" => "Bearer #{ENV['YELP_API_KEY']}"
@@ -22,7 +22,6 @@ class YelpSearchService
     })
 
     businesses = response.parsed_response["businesses"].sample(@risk_level == "1" ? 10 : 5)
-
 
     choices = []
     businesses.each do |choice|

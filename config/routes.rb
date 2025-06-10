@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/update'
   resources :restaurants, only: [:show]
+  resources :users, only: [:update]
   resources :parties, only: [:create, :show] do
   resource :roulette, only: :show
   end

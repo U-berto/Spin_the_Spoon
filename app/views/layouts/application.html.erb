@@ -13,14 +13,20 @@
   </head>
 
   <body>
-
+    <% unless current_user.username.present? %>
+      <div class="my-modal-backdrop">
+        <div class="my-modal-content">
+          <h3>Set your username</h3>
+            <%= render "pages/username_form" %>
+          </div>
+        </div>
+    <% end %>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <div class="container">
 
-    <%= yield %>
-  </div>
-
+      <%= yield %>
+    </div>
     <div class="bottom-nav">
       <%= link_to root_path, class: "nav-item" do %>
         <i class="fas fa-home"></i>

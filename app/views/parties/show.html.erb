@@ -1,4 +1,6 @@
-<div class="party-page">
+<%= turbo_stream_from "party_#{@party.id}_roulette" %>
+
+<div class="party-page" id="party_zone">
 
   <h1 class="party-title">🎉 Your Party</h1>
 
@@ -10,6 +12,9 @@
       <% end %>
     </ul>
 
+    <% @svg=@qr_code.as_svg(offset: 0,color: '000',shape_rendering: 'crispEdges',standalone: true) %>
+    <%= @svg.html_safe %>
+
     <% if current_user.id == @party.user_id %>
       <div class="party-url">
         <%= @url %>
@@ -19,7 +24,7 @@
 
   <% if current_user.id == @party.user_id %>
     <div class="roulette-action">
-      <%= link_to "🎲 Spin da Spoon!", party_roulette_path(@party), class: "spin-button" %>
+      <%= link_to "🎲 Let's GO", party_roulette_path(@party), class: "spin-button" %>
     </div>
   <% end %>
 </div>
