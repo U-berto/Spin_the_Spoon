@@ -1,0 +1,8 @@
+
+<div class="form-container">
+  <%= simple_form_for current_user do |f| %>
+    <%= f.input :username, required: true %>
+    <%= f.input :redirect, as: :hidden, input_html: { value: request.path } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

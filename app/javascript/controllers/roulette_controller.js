@@ -10,7 +10,6 @@ export default class extends Controller {
     const half         = slice / 2;
     const redirectRoot = "/restaurants/";
 
-    btn.addEventListener('click', () => {
       // ▶️ Pick the one slot that actually has a data-id
       const chosen = slots.findIndex(slot => slot.dataset.id && slot.dataset.id.trim());
       if (chosen < 0) {
@@ -18,8 +17,8 @@ export default class extends Controller {
         return;
       }
 
-      const rotation = 360 * 5 + chosen * slice + half;
-      btn.disabled   = true;
+      const rotation = 360 * 8 + chosen * slice + half;
+      // btn.disabled   = true;
       wrapper.style.transform = `rotate(${rotation}deg)`;
 
       wrapper.addEventListener('transitionend', function handler() {
@@ -34,6 +33,5 @@ export default class extends Controller {
 
         wrapper.removeEventListener('transitionend', handler);
       });
-    });
   }
 }

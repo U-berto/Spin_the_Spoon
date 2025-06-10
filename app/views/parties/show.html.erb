@@ -1,4 +1,6 @@
-<div class="party-page">
+<%= turbo_stream_from "party_#{@party.id}_roulette" %>
+
+<div class="party-page" id="party_zone">
 
   <h1 class="party-title">🎉 Your Party</h1>
 

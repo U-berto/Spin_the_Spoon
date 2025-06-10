@@ -1,8 +1,5 @@
 class RoulettesController < ApplicationController
   def show
-    # if party has a restaurant id skip the show method
-    # remove the spin the spoon button on show of roulettes
-
     @party = Party.find(params[:party_id])
     address = @party.user.address
 
@@ -25,25 +22,19 @@ class RoulettesController < ApplicationController
       )
 
       @party.update!(restaurant_id: @restaurant.id)
-      # broadcast a message to channel saying that you have result --> redirect to show roulettes
     end
+    broadcast_message
 
     @businesses = Rails.cache.fetch("party_result:#{@party.id}") do
       yelp_service.options
     end
   end
-  # def pick_restaurant
-  #   party = Party.find(params[:id])
-  #   user = party.admin
-  #   category = party.category
-  #
 
-  #   begin
+  def broadcast_message
+    Turbo::StreamsChannel.broadcast_append_to "party_#{@party.id}_roulette",
+                        partial: "roulettes/redirect",
+                        target: "party_zone",
+                        locals: { party: @party }
+  end
 
-  #     redirect_to restaurant_path(restaurant), notice: "Restaurant selected!"
-  #   rescue => e
-  #     logger.error "Yelp search failed: #{e.message}"
-  #     redirect_back fallback_location: root_path, alert: "Could not find a restaurant."
-  #   end
-  # end
 end

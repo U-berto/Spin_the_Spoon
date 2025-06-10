@@ -57,6 +57,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem 'httparty'
 gem "solid_cache"
+gem "solid_cable"
 
 group :development, :test do
   gem "dotenv-rails"
