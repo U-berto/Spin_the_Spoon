@@ -55,4 +55,13 @@ class PartiesController < ApplicationController
     redirect_to party_path(@party)
     end
   end
+
+  def my_party
+    @party = current_user.all_parties.last
+    if @party
+      redirect_to party_path(@party)
+    else
+      redirect_to root_path, alert: "You haven't created a party yet."
+    end
+  end
 end

@@ -28,6 +28,7 @@
     </div>
   <% end %>
 </div>
+
 <% if current_user.id == @party.user_id %>
   <% if @nearby_users.any? %>
     <h2>Nearby users you can invite</h2>

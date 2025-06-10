@@ -1,7 +1,7 @@
 class UserPartiesController < ApplicationController
 
   def index
-      @latest_invitation = UserParty
+    @latest_invitation = UserParty
     .where(user: current_user)
     .order(created_at: :desc)
     .first

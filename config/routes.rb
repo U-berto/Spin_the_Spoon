@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  get "/my_party", to: "parties#my_party", as: :my_party
   root to: "pages#home"
 
   get "/profile", to: "users#show", as: :profile

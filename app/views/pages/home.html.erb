@@ -1,36 +1,37 @@
 <div class="homepage-container">
   <div class="search-bar-container" data-controller="party-form">
     <%= simple_form_for Party.new, data: { "party-form-target": "form"} do |f| %>
+
+      <h6 class="bottom-title">Choose your adventure 🍴<h6>
       <div class="difficulty-container">
         <div class="form-group mb-5 fw-bold">
-          <div class="mb-3 select optional difficulty_level"><label for="difficulty_level" class="form-label">
-              Select the level
-              <span class="info-tooltip" data-tooltip="• ROOKIE → 10 guaranteed top‐rated restaurants
-            • PRO → 5 top‐rated + 5 adventurous hidden gems">ℹ️</span>
-          </label><select class="form-select select optional" name="risk_level" id="difficulty_level">
-            <option value="1">Rookie</option>
-            <option value="2">Pro</option>
-            </select>
+        <span class="info-tooltip" data-tooltip="• RISK-FREE → 10 guaranteed top‐rated restaurants
+            • RISKY → 5 top‐rated + 5 adventurous hidden gems">💡</span>
+          </label>
             <div class="difficulty-visual d-flex justify-content-center gap-4 mt-3">
-            <div class="difficulty-level" data-value="1">
-              <%= image_tag "EASY.png", alt: "Empty barrel – Rookie", class: "barrel-img" %>
-              <div class="label">Rookie</div>
+              <div class="difficulty-level" data-value="1">
+                <%= image_tag "EASY-removebg-preview.png", alt: "Empty barrel – Rookie", class: "barrel-img" %>
+                <div class="label" id="risk-free">Risk-free</div>
+              </div>
+              <div class="difficulty-level" data-value="2">
+                <%= image_tag "HARD-removebg-preview.png", alt: "Full barrel – Pro", class: "barrel-img" %>
+                <div class="label" id="risky">Risky</div>
+              </div>
             </div>
-            <div class="difficulty-level" data-value="2">
-              <%= image_tag "HARD.png", alt: "Full barrel – Pro", class: "barrel-img" %>
-              <div class="label">Pro</div>
-            </div>
-          </div>
+          <input type="hidden" name="risk_level" id="selected_difficulty_level" value="1">
+        </div>
       </div>
-      <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
-        <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Type a cuisine..." data-party-form-target="categoryInput" />
-        <button type="submit" class="btn d-flex align-items-center justify-content-center">
+      
+         <h6 class="first-mid-title">Now Search for a cuisine</h6>
+        <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
+         <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Lebanese, italian..." data-party-form-target="categoryInput" />
+         <button type="submit" class="btn d-flex align-items-center justify-content-center">
           <i class="fas fa-search text-secondary"></i>
-        </button>
-      </div>
-    <% end %>
-
-    <div class="categories-container">
+         </button>
+        </div>
+        <% end %>
+        <h6 class="second-mid-title">or choose a category:</h6>
+        <div class="categories-container">
       <% @categories.each do |category| %>
         <button class="category-button" data-action="click->party-form#onCategoryClick">
           <%= category %>
@@ -38,27 +39,27 @@
       <% end %>
     </div>
   </div>
-
-  <div class="bottom-nav">
-    <a href="/" class="nav-item"><i class="fas fa-home"></i></a>
-    <a href="/profile" class="nav-item"><i class="fas fa-user"></i></a>
-    <a href="/friends" class="nav-item"><i class="fas fa-users"></i></a>
-  </div>
 </div>
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function(){
-    var select = document.getElementById("difficulty_level"),
-        levels = document.querySelectorAll(".difficulty-level");
+ document.addEventListener("DOMContentLoaded", function() {
+  const levels = document.querySelectorAll(".difficulty-level");
+  const hiddenInput = document.getElementById("selected_difficulty_level");
 
-    function updateVisual(){
-      levels.forEach(function(el){
-        el.classList.toggle("active", el.dataset.value === select.value);
-      });
-    }
-
-    select.addEventListener("change", updateVisual);
-    updateVisual();  // highlight on page load
+  levels.forEach(level => {
+    level.addEventListener("click", function() {
+      // Update the hidden input value
+      hiddenInput.value = this.dataset.value;
+      
+      // Highlight selected level
+      levels.forEach(el => el.classList.remove("active"));
+      this.classList.add("active");
+    });
   });
+
+  // Set default selection to Rookie on page load
+  levels[0].classList.add("active");
+  hiddenInput.value = levels[0].dataset.value;
+});
 </script>
