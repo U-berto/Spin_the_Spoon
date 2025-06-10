@@ -12,6 +12,9 @@
       <% end %>
     </ul>
 
+    <% @svg=@qr_code.as_svg(offset: 0,color: '000',shape_rendering: 'crispEdges',standalone: true) %>
+    <%= @svg.html_safe %>
+
     <% if current_user.id == @party.user_id %>
       <div class="party-url">
         <%= @url %>

@@ -58,6 +58,7 @@ gem "sassc-rails"
 gem 'httparty'
 gem "solid_cache"
 gem "solid_cable"
+gem 'rqrcode'
 
 group :development, :test do
   gem "dotenv-rails"

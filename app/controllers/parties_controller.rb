@@ -30,6 +30,7 @@ class PartiesController < ApplicationController
     hashids = Hashids.new(PARTY_ID_SALT, PARTY_ID_HASH_LENGTH)
     @pin = hashids.encode(@party.id)
     @url = join_party_url(@pin)
+    @qr_code = RQRCode::QRCode.new(@url)
 
     @nearby_users = []
 

@@ -2,13 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
+
     const wrapper      = document.getElementById('spinner-wrapper');
     const slots        = Array.from(wrapper.querySelectorAll('.rating-slot'));
-    const btn          = document.getElementById('spin-btn');
     const count        = slots.length;
     const slice        = 360 / count;
     const half         = slice / 2;
     const redirectRoot = "/restaurants/";
+
+
 
       // ▶️ Pick the one slot that actually has a data-id
       const chosen = slots.findIndex(slot => slot.dataset.id && slot.dataset.id.trim());
@@ -17,9 +19,10 @@ export default class extends Controller {
         return;
       }
 
-      const rotation = 360 * 8 + chosen * slice + half;
-      // btn.disabled   = true;
-      wrapper.style.transform = `rotate(${rotation}deg)`;
+        setTimeout(() => {
+        const rotation = 360 * 8 + chosen * slice + half;
+        wrapper.style.transform = `rotate(${rotation}deg)`;
+        }, 500); 
 
       wrapper.addEventListener('transitionend', function handler() {
         slots.forEach((s, idx) => {
