@@ -1,13 +1,9 @@
-<div class="restaurant-container">
-  <h2>Picked Restaurant</h2>
-
-  <div class="restaurant-details">
-    <img src="<%= @restaurant.image %>" alt="<%= @restaurant.name %>" class="restaurant-image">
+<img src="<%= @restaurant.image %>" alt="<%= @restaurant.name %>" class="restaurant-image">
 
      <div class="restaurant-info">
         <h3><%= @restaurant.name %></h3>
 
-          <div class="restaurant-mid">
+          <div class="d-flex justify-content-between">
             <div class="restaurant-rating">
               <% 5.times do |i| %>
                  <% if i < @restaurant.rating.round %>
@@ -17,23 +13,25 @@
                  <% end %>
               <% end %>
             </div>
-           <p><%= @restaurant.location %></p>
           </div>
+
 
         <% if @restaurant.category == "Discover Local" %>
           <% @restaurant.category = "Tapas" %>
         <% end %>
         <p><%= @restaurant.category %></p>
      </div>
+
+    <p id="loc"><%= @restaurant.location %></p>
+
+  <div class="maps">
+    <div style="width: 100%; height: 230px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+    <%= link_to "📍Open in Google Maps", "https://www.google.com/maps/search/?api=1&query=#{CGI.escape(@restaurant.location)}", target: "_blank", rel: "noopener", class: "maps-link" %>
   </div>
- </div>
-
-  <div style="width: 100%; height: 330px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-
 
 <%# show page to party %>
 <%# fetch %>
