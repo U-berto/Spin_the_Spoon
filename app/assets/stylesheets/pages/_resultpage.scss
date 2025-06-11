@@ -1,7 +1,12 @@
 .restaurant-image {
-  width: 100%; 
-  height: 200px; 
-  object-fit: cover;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  display: block;
+  height: 200px;
 }
 
 .star {
@@ -27,7 +32,47 @@
   font-size: 22px;
 }
 
+.restaurant-info {
+  margin: 10px;
+  padding: 10px;
+  text-align: left;
+}
+
+#category {
+  font-weight: 500;
+}
+
 .restaurant-location {
   font-size: 18px;
   color: #666;
 }
+
+h3 {
+  margin-top: 10px;
+}
+
+.maps {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.maps-link {
+  color: rgb(255, 255, 255); /* Your requested color */
+  font-size: 12px;
+  font-weight:400;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  background-color: #c20000; 
+  padding: 7px;
+  border-radius: 10px;/* Adds spacing between the icon and text */
+}
+
+#loc {
+  font-size: 15px;
+  text-align: center;
+  color: #888;
+}
+
