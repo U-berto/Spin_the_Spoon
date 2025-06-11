@@ -30,7 +30,7 @@
             <div class="modal-body">
             <% if current_user.id == @party.user_id %>
               <div class="qr_code">
-                <% @svg=@qr_code.as_svg(offset: 0,color: '000',shape_rendering: 'crispEdges',standalone: true) %>
+                <% @svg=@qr_code.as_svg(offset: 0,color: '000',shape_rendering: 'crispEdges',standalone: true, module_size: 8) %>
                 <%= @svg.html_safe %>
               </div>
               <div class="party-url">
