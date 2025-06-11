@@ -52,9 +52,10 @@
 }
 
 .spin-button {
+  margin-top: 1rem;
   display: inline-block;
   padding: 12px 24px;
-  background-color: #ff0000;
+  background-color: rgb(251, 131, 155);
   color: white;
   font-size: 16px;
   border-radius: 8px;
@@ -63,7 +64,7 @@
 }
 
 .spin-button:hover {
-  background-color: #9f0808;
+  background-color: rgb(243, 98, 118);
 }
 
 .nearby-users-section {
@@ -86,4 +87,16 @@
   display: flex;
   justify-content: space-between;
   color: #555;
+}
+
+.Friendsbutton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  button {
+    background-color: rgba(46, 214, 234, 1);
+    border: 0px;
+    border-radius: 8px;
+  }
 }

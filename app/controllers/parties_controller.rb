@@ -1,4 +1,6 @@
 class PartiesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :join
+
   include ApplicationHelper
 
   PARTY_ID_SALT = "bananaloca"
@@ -41,6 +43,8 @@ class PartiesController < ApplicationController
   end
 
   def join
+    set_up_guest_user
+
     pin = params[:pin]
     hashids = Hashids.new(PARTY_ID_SALT, PARTY_ID_HASH_LENGTH)
     party_id = hashids.decode(pin).first

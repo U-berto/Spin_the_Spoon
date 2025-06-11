@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   get 'users/update'
   resources :restaurants, only: [:show]
   resources :users, only: [:update]
+  resource :user do
+    member do
+      delete :signout
+    end
+  end
   resources :parties, only: [:create, :show] do
   resource :roulette, only: :show
   end
