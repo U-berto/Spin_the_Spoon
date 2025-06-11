@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :user_parties
   has_many :parties, through: :user_parties
   has_many :admin_parties, class_name: "Party"
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
   geocoded_by :address

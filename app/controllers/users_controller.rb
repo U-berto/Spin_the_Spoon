@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def signout
+    sign_out current_user
+    redirect_to new_user_session_path
+  end
+
   private
 
   def user_params
