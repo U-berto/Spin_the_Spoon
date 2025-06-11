@@ -22,7 +22,7 @@ export default class extends Controller {
         setTimeout(() => {
         const rotation = 360 * 8 + chosen * slice + half;
         wrapper.style.transform = `rotate(${rotation}deg)`;
-        }, 500); 
+        }, 500);
 
       wrapper.addEventListener('transitionend', function handler() {
         slots.forEach((s, idx) => {
@@ -32,7 +32,7 @@ export default class extends Controller {
 
         setTimeout(() => {
           window.location.href = redirectRoot + slots[chosen].dataset.id;
-        }, 500);
+        }, 1200);
 
         wrapper.removeEventListener('transitionend', handler);
       });
