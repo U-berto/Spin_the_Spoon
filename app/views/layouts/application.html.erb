@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <% unless current_user.username.present? %>
+    <% if current_user && current_user.username.blank? %>
       <div class="my-modal-backdrop">
         <div class="my-modal-content">
           <h3>Set your username</h3>
@@ -24,7 +24,6 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <div class="container">
-
       <%= yield %>
     </div>
     <div class="bottom-nav">

@@ -59,7 +59,7 @@
   font-size: 17px;
   text-align: center;
   font-weight: bold;
-  background-color: rgb(212, 199, 156);
+  background-color: rgba(46, 214, 234, 1);
   color: rgb(0, 0, 0);
   border: none;
   border-radius: 12px;
@@ -68,7 +68,7 @@
 }
 
 .categories-container .category-button:hover {
-  background-color: rgb(209, 185, 108);
+  background-color: rgba(253, 139, 154, 1);
   transform: scale(1.05); /* Small pop effect */
 }
 
@@ -182,9 +182,19 @@
 }
 
 #risk-free {
-  color: green;
+  color: rgba(46, 214, 234, 1);
+  border: 5px;
+  border-color: rgba(46, 214, 234, 1);
 }
 
 #risky {
-  color: red;
+  color: rgba(253, 139, 154, 1);
+}
+
+#hard {
+  border: 1px solid rgba(253, 139, 154, 1);
+}
+
+#easy {
+  border: 1px solid rgba(46, 214, 234, 1);
 }

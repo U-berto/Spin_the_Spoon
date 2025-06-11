@@ -18,6 +18,22 @@
 @import "components/spinner";
 
 
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  width: 100%;       // ← set this to your nav’s real height
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+.container {
+  padding-bottom: 60px;
+}
+
 .my-modal-backdrop {
   background-color: rgba(0,0,0, 0.5);
   display: flex;

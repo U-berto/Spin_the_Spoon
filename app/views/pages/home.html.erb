@@ -9,11 +9,11 @@
             • RISKY → 5 top‐rated + 5 adventurous hidden gems">💡</span>
           </label>
             <div class="difficulty-visual d-flex justify-content-center gap-4 mt-3">
-              <div class="difficulty-level" data-value="1">
+              <div class="difficulty-level" id="easy" data-value="1">
                 <%= image_tag "EASY-removebg-preview.png", alt: "Empty barrel – Rookie", class: "barrel-img" %>
                 <div class="label" id="risk-free">Risk-free</div>
               </div>
-              <div class="difficulty-level" data-value="2">
+              <div class="difficulty-level" id="hard" data-value="2">
                 <%= image_tag "HARD-removebg-preview.png", alt: "Full barrel – Pro", class: "barrel-img" %>
                 <div class="label" id="risky">Risky</div>
               </div>
@@ -21,7 +21,7 @@
           <input type="hidden" name="risk_level" id="selected_difficulty_level" value="1">
         </div>
       </div>
-      
+
          <h6 class="first-mid-title">Now Search for a cuisine</h6>
         <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
          <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Lebanese, italian..." data-party-form-target="categoryInput" />
@@ -41,7 +41,6 @@
   </div>
 </div>
 
-
 <script>
  document.addEventListener("DOMContentLoaded", function() {
   const levels = document.querySelectorAll(".difficulty-level");
@@ -49,16 +48,13 @@
 
   levels.forEach(level => {
     level.addEventListener("click", function() {
-      // Update the hidden input value
       hiddenInput.value = this.dataset.value;
-      
-      // Highlight selected level
+
       levels.forEach(el => el.classList.remove("active"));
       this.classList.add("active");
     });
   });
 
-  // Set default selection to Rookie on page load
   levels[0].classList.add("active");
   hiddenInput.value = levels[0].dataset.value;
 });

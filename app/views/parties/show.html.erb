@@ -11,28 +11,50 @@
         <li class="member-item"><%= member.username %></li>
       <% end %>
     </ul>
-
-    <% @svg=@qr_code.as_svg(offset: 0,color: '000',shape_rendering: 'crispEdges',standalone: true) %>
-    <%= @svg.html_safe %>
-
-    <% if current_user.id == @party.user_id %>
-      <div class="party-url">
-        <%= @url %>
-      </div>
-    <% end %>
   </div>
-
-  <% if current_user.id == @party.user_id %>
-    <div class="roulette-action">
-      <%= link_to "🎲 Let's GO", party_roulette_path(@party), class: "spin-button" %>
+ </div>
+    <!-- Button trigger modal -->
+    <div class="Friendsbutton">
+      <button type="button" id="modalFriend" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add your Friends!
+      </button>
     </div>
-  <% end %>
-</div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Your friends</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <% if current_user.id == @party.user_id %>
+              <div class="qr_code">
+                <% @svg=@qr_code.as_svg(offset: 0,color: '000',shape_rendering: 'crispEdges',standalone: true, module_size: 8) %>
+                <%= @svg.html_safe %>
+              </div>
+              <div class="party-url">
+                <%= @url %>
+              </div>
+            <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<% if current_user.id == @party.user_id %>
-  <% if @nearby_users.any? %>
-    <h2>Nearby users you can invite</h2>
-      <ul>
+      <% if current_user.id == @party.user_id %>
+      <div class="roulette-action">
+        <%= link_to "🎲 Let's GO", party_roulette_path(@party), class: "spin-button" %>
+      </div>
+      <% end %>
+
+      <% if current_user.id == @party.user_id %>
+        <% if @nearby_users.any? %>
+          <h2>Nearby users you can invite</h2>
+            <ul>
         <% @nearby_users.each do |user| %>
           <% invitation = @existing_user_parties[user.id] %>
           <li>

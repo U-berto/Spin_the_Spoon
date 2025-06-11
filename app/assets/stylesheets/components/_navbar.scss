@@ -1,6 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  width: 100%;
+  
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,4 +15,17 @@
 
 .title {
   font-size: 15px;
+}
+
+.banner {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+      max-height: 100%;
+      height: auto;
+      width: auto;
+    }
 }

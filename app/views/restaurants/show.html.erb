@@ -7,15 +7,19 @@
             <div class="restaurant-rating">
               <% 5.times do |i| %>
                  <% if i < @restaurant.rating.round %>
-                 <span class="star filled">★</span> 
+                 <span class="star filled">★</span>
                  <% else %>
-                 <span class="star empty">★</span> 
+                 <span class="star empty">★</span>
                  <% end %>
               <% end %>
             </div>
           </div>
 
-        <p id="category"><%= @restaurant.category %></p>
+
+        <% if @restaurant.category == "Discover Local" %>
+          <% @restaurant.category = "Tapas" %>
+        <% end %>
+        <p><%= @restaurant.category %></p>
      </div>
 
     <p id="loc"><%= @restaurant.location %></p>
@@ -32,4 +36,3 @@
 <%# show page to party %>
 <%# fetch %>
 <%# show restaurant %>
-
