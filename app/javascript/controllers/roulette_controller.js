@@ -32,7 +32,7 @@ export default class extends Controller {
 
         setTimeout(() => {
           window.location.href = redirectRoot + slots[chosen].dataset.id;
-        }, 1200);
+        }, 2000);
 
         wrapper.removeEventListener('transitionend', handler);
       });
