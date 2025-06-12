@@ -1,29 +1,20 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "", class: "navbar-brand" do %>
-      <%= image_tag "SpinDaSpoonLogo.png" %>
-    <% end %>
+    <!-- Logo -->
+   
 
-  <div class="banner">
-    <%= image_tag "SpinDaSpoonBanner.png" %>
-  </div>
+    <!-- Banner (if necessary) -->
+    <div class="banner">
+      <%= image_tag "SpinDaSpoonBanner.png" %>
+    </div>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Sign out", signout_user_path, data: { turbo_method: :delete }, class: "nav-link" %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+    <!-- Authentication Links (Always Visible) -->
+    <div class="auth-links d-flex ms-auto">
+      <% if user_signed_in? %>
+        <%= link_to "Sign out", signout_user_path, data: { turbo_method: :delete }, class: "auth-link" %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path, class: "auth-link" %>
+      <% end %>
     </div>
   </div>
 </div>

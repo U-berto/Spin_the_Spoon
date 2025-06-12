@@ -6,7 +6,7 @@
   padding-bottom: 5rem;
   justify-content: space-between;
   height: 670px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .search-bar {
@@ -67,10 +67,7 @@
   transition: 0.3s;
 }
 
-.categories-container .category-button:hover {
-  background-color: rgba(253, 139, 154, 1);
-  transform: scale(1.05); /* Small pop effect */
-}
+
 
 .categories-container .category-button:last-child {
   grid-column: span 2;
@@ -97,6 +94,10 @@
 .nav-item:hover {
   color: #b6b5b5;
   transform: scale(1.4); /* Slight zoom effect */
+}
+
+.difficulty-container {
+  margin-top: 100px;
 }
 
 .difficulty-visual {
@@ -136,33 +137,38 @@
   font-weight: 600;
 }
 
-/* Tooltip styling */
+/* Tooltip Styling */
 .info-tooltip {
   display: inline-block;
   margin-left: 0.5ch;
   font-size: 0.9em;
-  cursor: help;
+  cursor: pointer; /* Makes the icon clickable */
   position: relative;
 }
 
-.info-tooltip:hover::after {
-  content: attr(data-tooltip);
+/* Tooltip Box (Centered on Mobile) */
+.tooltip-box {
+  display: none; /* Hidden until clicked */
   position: absolute;
-  white-space: pre;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
   font-size: 0.85rem;
-  line-height: 1.2;
-  pointer-events: none;
-  z-index: 10;
+  line-height: 1.4;
+  z-index: 100;
+  width: 80%; /* Makes it more readable on mobile */
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  left: 50%;
+  transform: translateX(-50%); /* Centers the tooltip */
 }
+
+
+
 .first-mid-title {
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: bold;
@@ -198,3 +204,4 @@
 #easy {
   border: 1px solid rgba(46, 214, 234, 1);
 }
+
