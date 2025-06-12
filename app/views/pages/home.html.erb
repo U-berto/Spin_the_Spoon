@@ -2,44 +2,79 @@
   <div class="search-bar-container" data-controller="party-form">
     <%= simple_form_for Party.new, data: { "party-form-target": "form"} do |f| %>
 
-      <h6 class="bottom-title">Choose your adventure 🍴<h6>
-      <div class="difficulty-container">
-        <div class="form-group mb-5 fw-bold">
-        <span class="info-tooltip" data-tooltip="• RISK-FREE → 10 guaranteed top‐rated restaurants
-            • RISKY → 5 top‐rated + 5 adventurous hidden gems">💡</span>
-          </label>
+       <div class="first-mid-title">
+        <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
+         <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Lebanese, italian..." data-party-form-target="categoryInput" />
+          <button type="submit" class="btn d-flex align-items-center justify-content-center">
+            <i class="fas fa-search text-secondary"></i>
+          </button>
+        </div>
+      </div>
+    <% end %>
+        
+        
+        <h6 class="second-mid-title">or choose a category:</h6>
+          <div class="categories-container">
+            <% @categories.each do |category| %>
+              <button class="category-button" data-action="click->party-form#onCategoryClick">
+                <%= category %>
+              </button>
+            <% end %>
+          </div>
+        
+        <div class="difficulty-container">
+          <h6 class="bottom-title">
+            Choose your adventure
+            <span class="info-tooltip" data-tooltip="• RISK-FREE → 10 guaranteed top‐rated restaurants
+                            • RISKY → 5 top‐rated + 5 adventurous hidden gems">💡</span>
+            </h6>
+            <div id="tooltip-box" class="tooltip-box">
+              • RISK-FREE → 10 guaranteed top‐rated restaurants <br>
+              • RISKY → 5 top‐rated + 5 adventurous hidden gems
+            </div>
+              
             <div class="difficulty-visual d-flex justify-content-center gap-4 mt-3">
               <div class="difficulty-level" id="easy" data-value="1">
                 <%= image_tag "EASY-removebg-preview.png", alt: "Empty barrel – Rookie", class: "barrel-img" %>
-                <div class="label" id="risk-free">Risk-free</div>
+                  <div class="label" id="risk-free">Risk-free</div>
               </div>
               <div class="difficulty-level" id="hard" data-value="2">
                 <%= image_tag "HARD-removebg-preview.png", alt: "Full barrel – Pro", class: "barrel-img" %>
-                <div class="label" id="risky">Risky</div>
+                  <div class="label" id="risky">Risky</div>
               </div>
             </div>
-          <input type="hidden" name="risk_level" id="selected_difficulty_level" value="1">
-        </div>
-      </div>
-
-         <h6 class="first-mid-title">Now Search for a cuisine</h6>
-        <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
-         <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Lebanese, italian..." data-party-form-target="categoryInput" />
-         <button type="submit" class="btn d-flex align-items-center justify-content-center">
-          <i class="fas fa-search text-secondary"></i>
-         </button>
-        </div>
-        <% end %>
-        <h6 class="second-mid-title">or choose a category:</h6>
-        <div class="categories-container">
-      <% @categories.each do |category| %>
-        <button class="category-button" data-action="click->party-form#onCategoryClick">
-          <%= category %>
-        </button>
-      <% end %>
-    </div>
-  </div>
+              <input type="hidden" name="risk_level" id="selected_difficulty_level" value="1">
+          </div>
+   </div>
 </div>
+     
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const lampIcon = document.querySelector(".info-tooltip");
+    const tooltipBox = document.getElementById("tooltip-box");
+
+    lampIcon.addEventListener("click", function(event) {
+    
+      tooltipBox.style.display = tooltipBox.style.display === "none" ? "block" : "none";
+
+      tooltipBox.style.position = "absolute";
+      tooltipBox.style.top = `${event.clientY + 15}px`; 
+      tooltipBox.style.left = "50%"; 
+      tooltipBox.style.transform = "translateX(-50%)"; 
+    });
+
+   
+    document.addEventListener("click", function(event) {
+      if (!lampIcon.contains(event.target) && !tooltipBox.contains(event.target)) {
+        tooltipBox.style.display = "none";
+      }
+    });
+
+  
+    tooltipBox.style.display = "none";
+  });
+</script>
 
 <script>
  document.addEventListener("DOMContentLoaded", function() {
