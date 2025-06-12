@@ -106,3 +106,36 @@
   display: flex;
   justify-content: center;
 }
+
+.btn-invite {
+  background-color: #2ed6ea;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.badge-pending {
+  background-color: gold;
+  color: black;
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.badge-accepted {
+  background-color: #fb839b;
+  color: black;
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.badge-declined {
+  background-color: #ff6961;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}

@@ -51,26 +51,36 @@
       </div>
       <% end %>
 
-      <% if current_user.id == @party.user_id %>
-        <% if @nearby_users.any? %>
-          <h2>Nearby users you can invite</h2>
-            <ul>
+     <% if current_user.id == @party.user_id %>
+  <% if @nearby_users.any? %>
+    <div class="mt-4">
+      <h2 class="mb-4">Locals Nearby to Invite</h2>
+      <ul class="list-group">
         <% @nearby_users.each do |user| %>
           <% invitation = @existing_user_parties[user.id] %>
-          <li>
-            <%= user.username %> –
-            <%= user.distance_to(current_user).round(2) %> km away
-            <% if invitation.nil? %>
-              <%= button_to "Invite", user_parties_path(user_id: user.id, party_id: @party.id), method: :post, class: "btn btn-primary" %>
-            <% elsif invitation.accepted == true %>
-              <span class="badge bg-light text-dark">✅ Accepted</span>
-            <% elsif invitation.accepted == false %>
-              <span class="badge bg-light text-dark">❌ Declined</span>
-            <% else %>
-              <span class="badge bg-light text-dark">⏳ Pending</span>
-            <% end %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong><%= user.username %></strong>
+              <small class="text-muted d-block">
+                <%= user.distance_to(current_user).round(2) %> km away
+              </small>
+            </div>
+            <div>
+              <% if invitation.nil? %>
+                <%= button_to "Invite", user_parties_path(user_id: user.id, party_id: @party.id),
+                              method: :post,
+                              class: "btn btn-sm btn-invite btn-primary" %>
+              <% elsif invitation.accepted == true %>
+                <span class="badge badge-accepted">Accepted</span>
+              <% elsif invitation.accepted == false %>
+                <span class="badge badge-declined">❌ Declined</span>
+              <% else %>
+                <span class="badge badge-pending">⏳ Pending</span>
+              <% end %>
+            </div>
           </li>
         <% end %>
       </ul>
+    </div>
   <% end %>
 <% end %>
