@@ -36,7 +36,15 @@ class YelpSearchService
   end
 
   def random_restaurant
-    options.sample
+    restaurant = options.sample
+    existing = Restaurant.find_by(name: restaurant.name)
+    if existing
+      restaurant.id = existing.id
+    else
+      restaurant.save
+    end
+
+    restaurant
   end
 
   def instantiate_restaurant_from_yelp(yelp_data)

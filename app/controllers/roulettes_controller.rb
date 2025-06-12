@@ -8,24 +8,13 @@ class RoulettesController < ApplicationController
     @restaurant = @party.restaurant
 
     unless @restaurant
-      picked_restaurant = yelp_service.random_restaurant
-      picked_restaurant.save
-
-      @restaurant = Restaurant.create!(
-        name: picked_restaurant[:name],
-        location: picked_restaurant[:location],
-        category: @party.category,
-        rating: picked_restaurant[:rating],
-        latitude: picked_restaurant[:latitude],
-        longitude: picked_restaurant[:longitude],
-        image: picked_restaurant[:image]
-      )
+      @restaurant = yelp_service.random_restaurant
 
       @party.update!(restaurant_id: @restaurant.id)
     end
     broadcast_message
 
-    @businesses = Rails.cache.fetch("party_result:#{@party.id}") do
+    @businesses = Rails.cache.fetch("party_resul\t:#{@party.id}") do
       yelp_service.options
     end
   end

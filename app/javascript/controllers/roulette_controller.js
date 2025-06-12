@@ -13,13 +13,13 @@ export default class extends Controller {
 
 
       // ▶️ Pick the one slot that actually has a data-id
-      const chosen = slots.findIndex(slot => slot.dataset.id && slot.dataset.id.trim());
+      const chosen = slots.findIndex(slot => slot.dataset.chosen == "true");
       if (chosen < 0) {
         console.warn("No restaurant slot found with a valid data-id");
         return;
       }
 
-        setTimeout(() => {
+      setTimeout(() => {
         const rotation = 360 * 8 + chosen * slice + half;
         wrapper.style.transform = `rotate(${rotation}deg)`;
         }, 500);

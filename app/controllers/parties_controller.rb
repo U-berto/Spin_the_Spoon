@@ -10,7 +10,6 @@ class PartiesController < ApplicationController
     user_input = params[:category_name].strip.capitalize
     matched_cuisine = find_cuisine(user_input)
     risk_level = params[:risk_level]
-
     # return matched_cuisine = "tapas" if matched_cuisine = "Discover Local"
     if matched_cuisine && CUISINES.include?(matched_cuisine)
       @party = Party.new(category: matched_cuisine, user: current_user, risk_level: risk_level)

@@ -7,6 +7,7 @@ class Restaurant < ApplicationRecord
     tapas:"https://media.istockphoto.com/id/1350197620/es/foto/comida-espa%C3%B1ola.jpg?s=612x612&w=0&k=20&c=xuhPNhV56luoGi61mDiFMk1Syp_LZ6WJIkcTuI5Et9U=",
     italian:"https://blog.italotreno.com/wp-content/uploads/2023/10/Cosa_mangiare_Roma_10_piatti_imperdibili.jpg"
   }
+
   def image
     return super if super.present?
     IMAGE_HASH[category.downcase.gsub(" ","_").to_sym]

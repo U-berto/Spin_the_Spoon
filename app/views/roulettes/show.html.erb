@@ -12,7 +12,9 @@
       <% @businesses.each_with_index do |biz, i| %>
         <li class="rating-slot"
             data-index="<%= i %>"
+            data-chosen="<%= @restaurant.id ==  biz['id'] %>"
             data-id="<%= biz['id'] %>">
+
           <%= raw('★' * biz['rating'].to_i) %>
         </li>
       <% end %>
