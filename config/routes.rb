@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+  get 'errors/internal_server_error'
   get 'users/update'
   resources :restaurants, only: [:show]
   resources :users, only: [:update]
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
   devise_for :users
   get "/my_party", to: "parties#my_party", as: :my_party
   root to: "pages#home"
