@@ -1,18 +1,19 @@
 <div class="homepage-container">
-  <div class="search-bar-container" data-controller="party-form">
-    <%= simple_form_for Party.new, data: { "party-form-target": "form"} do |f| %>
+  <div class="input-container">
+    <div class="search-bar-container" data-controller="party-form">
+      <%= simple_form_for Party.new, data: { "party-form-target": "form"} do |f| %>
 
-       <div class="first-mid-title">
-        <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
-         <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Lebanese, italian..." data-party-form-target="categoryInput" />
-          <button type="submit" class="btn d-flex align-items-center justify-content-center">
-            <i class="fas fa-search text-secondary"></i>
-          </button>
+        <div class="first-mid-title">
+          <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
+          <input class="form-control" type="text" name="category_name" id="search_query" placeholder="Lebanese, italian..." data-party-form-target="categoryInput" />
+            <button type="submit" class="btn d-flex align-items-center justify-content-center">
+              <i class="fas fa-search text-secondary"></i>
+            </button>
+          </div>
         </div>
-      </div>
-    <% end %>
-        
-        
+      <% end %>
+
+
         <h6 class="second-mid-title">or choose a category:</h6>
           <div class="categories-container">
             <% @categories.each do |category| %>
@@ -21,7 +22,9 @@
               </button>
             <% end %>
           </div>
-        
+        </div>
+    </div>
+    
         <div class="difficulty-container">
           <h6 class="bottom-title">
             Choose your adventure
@@ -32,7 +35,7 @@
               • RISK-FREE → 10 guaranteed top‐rated restaurants <br>
               • RISKY → 5 top‐rated + 5 adventurous hidden gems
             </div>
-              
+
             <div class="difficulty-visual d-flex justify-content-center gap-4 mt-3">
               <div class="difficulty-level" id="easy" data-value="1">
                 <%= image_tag "EASY-removebg-preview.png", alt: "Empty barrel – Rookie", class: "barrel-img" %>
@@ -47,7 +50,7 @@
           </div>
    </div>
 </div>
-     
+
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -55,23 +58,23 @@
     const tooltipBox = document.getElementById("tooltip-box");
 
     lampIcon.addEventListener("click", function(event) {
-    
+
       tooltipBox.style.display = tooltipBox.style.display === "none" ? "block" : "none";
 
       tooltipBox.style.position = "absolute";
-      tooltipBox.style.top = `${event.clientY + 15}px`; 
-      tooltipBox.style.left = "50%"; 
-      tooltipBox.style.transform = "translateX(-50%)"; 
+      tooltipBox.style.top = `${event.clientY + 15}px`;
+      tooltipBox.style.left = "50%";
+      tooltipBox.style.transform = "translateX(-50%)";
     });
 
-   
+
     document.addEventListener("click", function(event) {
       if (!lampIcon.contains(event.target) && !tooltipBox.contains(event.target)) {
         tooltipBox.style.display = "none";
       }
     });
 
-  
+
     tooltipBox.style.display = "none";
   });
 </script>

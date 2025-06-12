@@ -3,10 +3,9 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  padding-bottom: 5rem;
   justify-content: space-between;
-  height: 670px;
   margin-top: 30px;
+  margin-bottom: 60px;
 }
 
 .search-bar {
@@ -50,13 +49,13 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   justify-items: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .categories-container .category-button {
   width: 100%;
-  padding: 14px;
-  font-size: 17px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
   text-align: center;
   font-weight: bold;
   background-color: rgba(46, 214, 234, 1);
@@ -67,6 +66,9 @@
   transition: 0.3s;
 }
 
+.categories-container .category-button button:hover {
+  background-color: rgba(253, 139, 154, 1);
+}
 
 
 .categories-container .category-button:last-child {
@@ -94,10 +96,6 @@
 .nav-item:hover {
   color: #b6b5b5;
   transform: scale(1.4); /* Slight zoom effect */
-}
-
-.difficulty-container {
-  margin-top: 100px;
 }
 
 .difficulty-visual {
@@ -131,13 +129,11 @@
   height: auto;
 }
 
-/* Label styling */
 .label {
   font-size: 0.85rem;
   font-weight: 600;
 }
 
-/* Tooltip Styling */
 .info-tooltip {
   display: inline-block;
   margin-left: 0.5ch;
@@ -146,7 +142,7 @@
   position: relative;
 }
 
-/* Tooltip Box (Centered on Mobile) */
+
 .tooltip-box {
   display: none; /* Hidden until clicked */
   position: absolute;
@@ -204,4 +200,3 @@
 #easy {
   border: 1px solid rgba(46, 214, 234, 1);
 }
-
